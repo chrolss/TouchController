@@ -1,0 +1,9 @@
+#!/bin/bash
+
+echo "Start backup of files"
+cp /var/www/html/touchController.html /var/www/html/old/touchController_old.html
+cp /var/www/html/Vector2.js /var/www/html/old/Vector2_old.js
+echo "Copying the new files"
+cp touchController.html /var/www/html/touchController.html
+cp Vector2.js /var/www/html/Vector2.js
+echo "Copy complete"
