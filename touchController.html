@@ -20,7 +20,7 @@
 		margin: 0px;
 	}
 	canvas {
-		background-color:#111133;
+		background-color: #111133;
 		display:block;
 		position:absolute;
 	}
@@ -44,7 +44,7 @@ var mouseX, mouseY,
 	// is this running in a touch capable environment?
 	touchable = 'createTouch' in document,
 	touches = []; // array of touch vectors
-setInterval(draw, 1000/35);
+setInterval(draw, 1000/35); // this line defines the LOOP
 if(touchable) {
 	canvas.addEventListener( 'touchstart', onTouchStart, false );
 	canvas.addEventListener( 'touchmove', onTouchMove, false );
@@ -66,10 +66,18 @@ function resetCanvas (e) {
 function init(){
 
 }
+// function and variables for converting screen positions
+// to useful control values
+var controlY, controlX;
+function positions2control(x,y){
+  // my own function, trying to map screen positions with controls
+  controlX = mouseX;
+  controlY = mouseY;
+}
 function draw() {
 
 	c.clearRect(0,0,canvas.width, canvas.height);
-
+  positions2control(mouseX,mouseY);
 
 
 	if(touchable) {
@@ -89,10 +97,10 @@ function draw() {
 	} else {
 
 		c.fillStyle	 = "white";
-		c.fillText("mouse : "+mouseX+", "+mouseY, mouseX, mouseY);
-
+		//c.fillText("mouse : X: "+mouseX+", Y: "+mouseY, mouseX, mouseY);
+    c.fillText("mouse : X: "+controlX+", Y: "+controlY, mouseX, mouseY);
 	}
-	//c.fillText("hello", 0,0);
+
 
 }
 /*
